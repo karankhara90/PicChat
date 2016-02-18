@@ -1,6 +1,7 @@
 package com.example.karan.picchat;
 
 import android.app.ActionBar;
+import android.app.ActionBar.TabListener;
 import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
@@ -30,8 +31,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+//import android.support.v4.app.FragmentActivity;
+//import android.support.v4.*;
+//import android.support.v7.*;
 
-public class MyActivity extends FragmentActivity implements ActionBar.TabListener
+
+public class MyActivity extends FragmentActivity implements TabListener
 {
     public static final String TAG = MyActivity.class.getSimpleName();
 
@@ -173,6 +178,7 @@ public class MyActivity extends FragmentActivity implements ActionBar.TabListene
 
     SectionsPagerAdapter mSectionsPagerAdapter;
 
+
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -183,21 +189,24 @@ public class MyActivity extends FragmentActivity implements ActionBar.TabListene
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_my);
+//        setContentView(R.layout.activity_inbox);
 
-        ParseAnalytics.trackAppOpened(getIntent());
-        ParseUser currentUser = ParseUser.getCurrentUser();
-        if(currentUser == null)
-        {
-            navigateToLogin();
+        try {
+            ParseAnalytics.trackAppOpened(getIntent());
+            ParseUser currentUser = ParseUser.getCurrentUser();
+            if (currentUser == null) {
+                navigateToLogin();
+            } else {
+                Log.i(TAG, currentUser.getUsername());
+                //System.out.println("Current User is: "+currentUser.getUsername());
+            }
         }
-        else
-        {
-            Log.i(TAG, currentUser.getUsername());
-            //System.out.println("Current User is: "+currentUser.getUsername());
+        catch (Exception exc){
+            Log.e("TAG","exc in parse starting: "+exc);
         }
-
         // Set up the action bar.
         final ActionBar actionBar = getActionBar();
+//          final PagerTabStrip actionBar;
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         // Create the adapter that will return a fragment for each of the three
@@ -218,7 +227,7 @@ public class MyActivity extends FragmentActivity implements ActionBar.TabListene
             }
         });
 
-        // For each of the sections in the app, add a tab to the action bar.
+         //For each of the sections in the app, add a tab to the action bar.
         for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
             // Create a tab with text corresponding to the page title defined by
             // the adapter. Also specify this Activity object, which implements
@@ -228,10 +237,9 @@ public class MyActivity extends FragmentActivity implements ActionBar.TabListene
                     actionBar.newTab()
                             .setText(mSectionsPagerAdapter.getPageTitle(i))
                             .setTabListener(this));
+            actionBar.setLogo(R.drawable.ic_icon);
         }
     }
-
-
 
     // Now we want to store the image clicked in our gallery
     @Override

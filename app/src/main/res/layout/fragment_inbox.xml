@@ -13,13 +13,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@android:id/list"
+        android:divider="#e0dcdc"
+        android:dividerHeight="1dp"
+        android:headerDividersEnabled="true"
+        android:footerDividersEnabled="true"
+
+        android:splitMotionEvents="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_gravity="top"
+        android:background="@drawable/chat_back_color"
         android:layout_alignParentTop="true" />
     <TextView
         android:id="@android:id/empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#e0dcdc"
+
         android:text="@string/empty_inbox_label" />
 </RelativeLayout>

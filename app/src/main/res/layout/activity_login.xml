@@ -7,7 +7,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".MyActivity"
-    >
+    android:background="@drawable/nat1">
 
     <EditText
         android:layout_width="wrap_content"
@@ -16,12 +16,9 @@
         android:ems="50"
         android:id="@+id/usernameField"
         android:hint="@string/username_hint"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="46dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" >
+        android:layout_above="@+id/passwordField"
+        android:layout_centerHorizontal="true"
+        android:textColor="#000000">
         <requestFocus/>
         </EditText>
 
@@ -33,16 +30,16 @@
         android:ems="10"
         android:id="@+id/passwordField"
         android:hint="@string/password_hint"
-        android:layout_marginTop="48dp"
-        android:layout_below="@+id/usernameField"
+        android:layout_above="@+id/loginButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/usernameField"
-        android:layout_alignEnd="@+id/usernameField" />
+        android:textColor="#000000" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/login_label"
         android:id="@+id/loginButton"
@@ -50,15 +47,33 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/passwordField"
-        android:layout_alignEnd="@+id/passwordField" />
+        android:layout_alignEnd="@+id/passwordField"
+        android:background="#ffffff" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/sign_up_text"
+
         android:id="@+id/signUpText"
         android:layout_below="@+id/loginButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Welcome to PicChat"
+        android:id="@+id/textView"
+        android:paddingLeft="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/usernameField"
+        android:layout_alignEnd="@+id/usernameField"
+        android:textAlignment="center"
+        android:textColor="#ffffff" />
 
 </RelativeLayout>

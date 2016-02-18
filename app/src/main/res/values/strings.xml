@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">PicChat</string>
+    <string name="app_name">Pic Chat</string>
     <string name="title_section1">Inbox</string>
     <string name="title_section2">Friends list</string>
     <string name="hello_world">Hello world!</string>
@@ -21,7 +21,7 @@
     <string name="login_error_title">Oops!!</string>
     <string name="empty_inbox_label">No new messages yet</string>
     <string name="empty_friends_label">No new Friends!! Add some</string>
-    <string name="menu_edit_friends_label">Edit Friends</string>
+    <string name="menu_edit_friends_label">Add Friends</string>
     <string name="title_activity_edit_friends">EditFriendsActivity</string>
     <string name="error_title">We are sorry</string>
     <string name="menu_camera_label">Camera</string>
@@ -47,5 +47,6 @@
     <string name="success_message">message is sent!</string>
     <string name="error_sending_message">There was an error sending your message. Please try again!</string>
     <string name="title_activity_view_image">PicCHat</string>
+    <string name="title_activity_inbox">InboxActivity</string>
 
 </resources>
