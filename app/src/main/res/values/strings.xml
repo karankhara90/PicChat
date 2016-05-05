@@ -49,4 +49,7 @@
     <string name="title_activity_view_image">PicCHat</string>
     <string name="title_activity_inbox">InboxActivity</string>
 
+    <string name="facebook_app_id">919783728135757</string>
+    <string name="title_activity_demo">DemoActivity</string>
+
 </resources>

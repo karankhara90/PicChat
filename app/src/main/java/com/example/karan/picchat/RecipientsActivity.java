@@ -70,35 +70,31 @@ public class RecipientsActivity extends ListActivity {
 
         query.findInBackground(new FindCallback<ParseUser>() {
             @Override
-            public void done(List<ParseUser> friends, ParseException e)
-            {
+            public void done(List<ParseUser> friends, ParseException e) {
                 setProgressBarIndeterminateVisibility(false);
-                if(e==null)
-                {
-                    mFriends=friends;
+                if (e == null) {
+                    mFriends = friends;
                     String[] usernames = new String[mFriends.size()];
                     int i = 0;
-                    for(ParseUser user: mFriends) {
+                    for (ParseUser user : mFriends) {
                         usernames[i] = user.getUsername();
                         System.out.println("user[" + i + "]: " + usernames[i]);
                         i++;
                     }
                     //create array adapter
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(getListView().getContext(),
-                            android.R.layout.simple_list_item_checked,usernames);
+                            android.R.layout.simple_list_item_checked, usernames);
                     setListAdapter(adapter);
 
-                }
-                else
-                {
+                } else {
                     Log.e(TAG, e.getMessage());
 
-                    AlertDialog.Builder builder= new AlertDialog.Builder(RecipientsActivity.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(RecipientsActivity.this);
 
                     builder.setMessage(e.getMessage());
                     builder.setTitle(getString(R.string.error_title));
-                    builder.setPositiveButton(android.R.string.ok,null);
-                    AlertDialog dialog=builder.create();
+                    builder.setPositiveButton(android.R.string.ok, null);
+                    AlertDialog dialog = builder.create();
                     dialog.show();
                 }
 
@@ -132,21 +128,35 @@ public class RecipientsActivity extends ListActivity {
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
             case R.id.action_send:
-                ParseObject message = createMessage();
-                if(message==null){
-                    //error
-                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                    builder.setMessage(getString(R.string.error_selecting_file))
-                            .setTitle(getString(R.string.error_selecting_file_title))
-                            .setPositiveButton(android.R.string.ok,null);
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                }
-                else{
-                    send(message);
-                    finish();
-                }
-                return true;
+
+                    ParseObject message = createMessage();
+                    if(message==null){
+                        //error
+                        try{
+                            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                            builder.setMessage(getString(R.string.error_selecting_file))
+                                    .setTitle(getString(R.string.error_selecting_file_title))
+                                    .setPositiveButton(android.R.string.ok,null);
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                        }
+                        catch (Exception excptn){
+                            Log.e("TAG","excptn is in ---------------: "+excptn);
+                        }
+
+                    }
+                    else{
+                        try {
+                            send(message);
+                            finish();
+                        }
+                        catch (Exception excp){
+                            Log.e("TAG","excp is in !!!!!!!!!!!!!!!!!!!!!!!!!!: "+excp);
+                        }
+
+                    }
+                    return true;
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -167,14 +177,20 @@ public class RecipientsActivity extends ListActivity {
             //***************
             byte[] fileBytes = FileHelper.getByteArrayFromFile(this, mMediaUrl);
             if (fileBytes == null) {
+                Toast.makeText(this, "mMedia is null",Toast.LENGTH_LONG);
                 return null;
             } else {
                 if (mFileType.equals(ParseConstants.TYPE_IMAGE)) {
                     fileBytes = FileHelper.reduceImageForUpload(fileBytes);
                 }
-                String fileName = FileHelper.getFileName(this, mMediaUrl, mFileType);
-                ParseFile file = new ParseFile(fileName, fileBytes);
-                message.put(ParseConstants.KEY_FILE, file);
+                try{
+                    String fileName = FileHelper.getFileName(this, mMediaUrl, mFileType);
+                    ParseFile file = new ParseFile(fileName, fileBytes);
+                    message.put(ParseConstants.KEY_FILE, file);
+                }
+                catch (Exception except){
+                    Log.e("TAG","except is =========================== "+except);
+                }
 
              }
             //return message;

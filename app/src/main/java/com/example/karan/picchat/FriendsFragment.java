@@ -3,14 +3,14 @@ package com.example.karan.picchat;
 //import android.app.ListFragment;
 
 import android.app.AlertDialog;
-import android.os.Bundle;
+//import android.app.ListFragment;
 import android.support.v4.app.ListFragment;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -18,6 +18,8 @@ import com.parse.ParseRelation;
 import com.parse.ParseUser;
 
 import java.util.List;
+
+//import android.support.v4.app.ListFragment;
 
 public class FriendsFragment extends ListFragment
 {
@@ -40,7 +42,7 @@ public class FriendsFragment extends ListFragment
         mCurrentUser = ParseUser.getCurrentUser();
         mFriendsRelation = mCurrentUser.getRelation(ParseConstants.KEY_FRIENDS_RELATION);
 
-        getActivity().setProgressBarIndeterminateVisibility(true);
+        //getActivity().setProgressBarIndeterminateVisibility(true);
         ParseQuery <ParseUser> query= mFriendsRelation.getQuery();
         query.addAscendingOrder(ParseConstants.KEY_USERNAME);
 
@@ -48,7 +50,7 @@ public class FriendsFragment extends ListFragment
             @Override
             public void done(List<ParseUser> friends, ParseException e)
             {
-                getActivity().setProgressBarIndeterminateVisibility(false);
+                //getActivity().setProgressBarIndeterminateVisibility(false);
                 if(e==null)
                 {
                     mFriends=friends;

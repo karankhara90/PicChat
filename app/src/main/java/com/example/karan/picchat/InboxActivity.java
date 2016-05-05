@@ -27,8 +27,10 @@ public class InboxActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inbox);
-        Log.e("TAG","check 1 log");
+        Log.e("TAG", "check 1 log");
         Toast.makeText(this,"check 1",Toast.LENGTH_LONG).show();
+
+
     }
 
     protected List<ParseObject> mMessages;

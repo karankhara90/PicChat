@@ -43,8 +43,12 @@ public class FileHelper {
 	        }
 	        finally {
 	        	try {
-	        		inStream.close();
-	        		outStream.close();
+					if(inStream != null ){
+						inStream.close();
+					}
+					if(outStream != null ){
+						outStream.close();
+					}
 	        	}
 	        	catch (IOException e) { /*( Intentionally blank */ }
 	        }

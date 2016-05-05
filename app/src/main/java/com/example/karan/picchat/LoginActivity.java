@@ -15,14 +15,23 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
+//import com.facebook.CallbackManager;
+//import com.facebook.FacebookCallback;
+//import com.facebook.FacebookException;
+//import com.facebook.FacebookSdk;
+//import com.facebook.login.LoginResult;
+//import com.facebook.login.widget.LoginButton;
+
 
 public class LoginActivity extends Activity {
 
     protected EditText mUsername;
     protected EditText mPassword;
     protected Button mLoginButton;
+    //private LoginButton mFbLoginButton;
 
     protected TextView mSignUpTextView;
+   // private CallbackManager callbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +50,7 @@ public class LoginActivity extends Activity {
 
         mUsername=(EditText)findViewById(R.id.usernameField);
         mPassword=(EditText)findViewById(R.id.passwordField);
-        mLoginButton=(Button)findViewById(R.id.loginButton);
+        mLoginButton=(Button)findViewById(R.id.loginBtn);
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,10 +98,53 @@ public class LoginActivity extends Activity {
                     });
 
                 }
+
+//                mFbLoginButton = (LoginButton)findViewById(R.id.login_button);
+//
+//                // create a callback to handle the results of the login attempts and register it with the CallbackManager.
+//                // Custom callbacks should implement FacebookCallback.
+//                mFbLoginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+//                    @Override
+//                    public void onSuccess(LoginResult loginResult) {   //If the login attempt is successful, onSuccess is called.
+////                        info.setText(
+////                                "User ID: "
+////                                        + loginResult.getAccessToken().getUserId()
+////                                        + "\n" +
+////                                        "Auth Token: "
+////                                        + loginResult.getAccessToken().getToken()
+////                        );
+//                        Toast.makeText(getApplicationContext(),"User ID: "+ loginResult.getAccessToken().getUserId()+ "\n" + "Auth Token: "
+//                                        + loginResult.getAccessToken().getToken(), Toast.LENGTH_LONG).show();
+//                    }
+//
+//                    @Override
+//                    public void onCancel() {    //If the user cancels the login attempt, onCancel is called.
+//                        Toast.makeText(getApplicationContext(),"FB Login attempt canceled.",Toast.LENGTH_LONG);
+//                    }
+//
+//                    @Override
+//                    public void onError(FacebookException e) {   //If an error occurs, onError is called.
+//                        Toast.makeText(getApplicationContext(),"FB Login attempt failed.",Toast.LENGTH_LONG);
+//                    }
+//                });
             }
         });
 
+
+        //The SDK needs to be initialized before using any of its methods
+//        FacebookSdk.sdkInitialize(getApplicationContext());
+//
+//        //Next, initialize your instance of CallbackManager
+//        callbackManager = CallbackManager.Factory.create();
+
     }
+    //Tapping the login button (or fb login button) starts off a new Activity, which returns a result.
+    // To receive and handle the result, override the onActivityResult method of your Activity and
+    // pass its parameters to the onActivityResult method of CallbackManager.
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        callbackManager.onActivityResult(requestCode, resultCode, data);
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

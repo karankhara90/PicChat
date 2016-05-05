@@ -32,7 +32,7 @@ import java.util.Date;
 import java.util.Locale;
 
 //import android.support.v4.app.FragmentActivity;
-//import android.support.v4.*;
+import android.support.v4.*;
 //import android.support.v7.*;
 
 
@@ -110,6 +110,8 @@ public class MyActivity extends FragmentActivity implements TabListener
 
             }
         }
+
+
 
         private Uri getOutputMediaFileUri(int mediaTypeImage) {
             // To be safe, you should check that the SDCard is mounted
@@ -192,7 +194,7 @@ public class MyActivity extends FragmentActivity implements TabListener
 //        setContentView(R.layout.activity_inbox);
 
         try {
-            ParseAnalytics.trackAppOpened(getIntent());
+            ParseAnalytics.trackAppOpenedInBackground(getIntent());
             ParseUser currentUser = ParseUser.getCurrentUser();
             if (currentUser == null) {
                 navigateToLogin();
@@ -239,7 +241,9 @@ public class MyActivity extends FragmentActivity implements TabListener
                             .setTabListener(this));
             actionBar.setLogo(R.drawable.ic_icon);
         }
+
     }
+
 
     // Now we want to store the image clicked in our gallery
     @Override
@@ -316,7 +320,6 @@ public class MyActivity extends FragmentActivity implements TabListener
 
         }
     }
-
 
 
     private void navigateToLogin() {

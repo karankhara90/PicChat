@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 21
+    compileSdkVersion 23
     buildToolsVersion '21.1.2'
 
     defaultConfig {
         applicationId "com.example.karan.picchat"
         minSdkVersion 15
         targetSdkVersion 21
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "2.1"
         multiDexEnabled true
 
 
@@ -21,13 +21,29 @@ android {
         }
     }
 }
+// Add the Maven Central Repository to build.gradle before dependencies:
+repositories {
+    mavenCentral()
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     // compile 'com.android.support:appcompat-v4:20.0.3'
-    compile 'com.android.support:support-v4:21.0.0'
     //compile 'com.parse.bolts:bolts-android:1.+'
     compile fileTree(dir: 'libs', include: 'Parse-*.jar')
     compile fileTree(dir: 'libs', include: 'commons-io-2.4.jar')
+
+//    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+    //{
+//        exclude group: 'com.android.support', module: 'support-v4'
+//    }
+
+
+    compile 'com.android.support:support-v4:23.1.1'
     compile 'com.android.support:multidex:1.0.0'
+    compile 'com.google.android.gms:play-services:8.4.0'
+    compile 'com.google.android.gms:play-services-ads:8.4.0'
+    compile 'com.google.android.gms:play-services-auth:8.4.0'
+    compile 'com.google.android.gms:play-services-gcm:8.4.0'
 }
+

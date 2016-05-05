@@ -13,15 +13,15 @@
 
     <item android:id="@+id/action_logout"
         android:title="@string/menu_logout_label"
-        android:orderInCategory="100"
-        android:showAsAction="always"
-         />
+        android:orderInCategory="100"  />
+        <!--android:showAsAction="always"-->
+         <!--/>-->
     <!--app:showAsAction="never" -->
 
     <item android:id="@+id/action_edit_friends"
-        android:title="@string/menu_edit_friends_label"
-        android:showAsAction="always"
-        />
+        android:title="@string/menu_edit_friends_label" />
+        <!--android:showAsAction="always"-->
+        <!--/>-->
     <item android:id="@+id/action_camera"
         android:title="@string/menu_camera_label"
         android:icon="@drawable/ic_action_camera"
@@ -30,9 +30,9 @@
     <!-- app:showAsAction="always" -->
     <item android:id="@+id/action_message"
         android:title="Text"
-        android:icon="@drawable/ic_action_chat"
-        android:showAsAction="always"
-        />
+        android:icon="@drawable/ic_action_chat"  />
+        <!--android:showAsAction="always"-->
+        <!--/>-->
     <!-- app:showAsAction="always" -->
 
 
